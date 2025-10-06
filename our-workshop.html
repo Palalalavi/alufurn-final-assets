@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshop</title>
+  <!-- Import Manrope and Inter fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Inter:wght@400&display=swap" rel="stylesheet" />
+  <style>
+
+    /* --- Reset and Global Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: #fff;
+      color: #303030;
+      line-height: 1.5;
+    }
+    /* SECTION 1: Header */
+    .section1 {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 48px;
+  padding: 8px 16px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+    .header-container {
+      display: flex;
+      align-items: center;
+    }
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    .logo {
+      width: 128px;
+      height: 13px;
+    }
+    .get-in-touch-btn {
+      margin-left: auto;
+      height: 32px;
+      padding: 0 14px;
+      background: #343E33;
+      color: #ffffff;
+      font-size: 12px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+    }
+
+.mobile-menu {
+  position: absolute;
+  top: 48px; /* below header */
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  padding: 20px 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-item {
+  font-size: 20px;
+  font-weight: 600;
+  color: #303030;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+.hidden {
+  display: none;
+}
+
+    
+    /* --- Page Header "Our Workshop" --- */
+    .title {
+      font-size: 28px;
+      font-weight: 750;
+      color: #303030;
+      margin-bottom: 20px;
+      padding: 20px 16px 0 16px
+    }
+
+    /* Workshop Image */
+    .image {
+      padding: 0 0px;
+      overflow: hidden;
+    }
+.image-container {
+  position: relative;
+  height: 600px; /* container height */
+  overflow: hidden; /* ensures content doesn't exceed 600px */
+}
+.workshop-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover; /* ensures the image is nicely cropped within 600px tall container */
+}
+    
+/* --- Workshop Image --- */
+.image-details h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #303030;
+  margin-bottom: 12px;
+  padding: 20px 16px 0 16px; 
+}
+
+.image-details p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #636363;
+  margin-bottom: 0;
+  padding: 0 16px; /* 16px padding on sides */
+}
+
+
+.getintouch1-section {
+  text-align: center;
+  margin-top: 20px;
+}
+.getintouch1-section .sub-text {
+  font-size: 16px;
+  color: #777777;
+  margin-bottom: 4px;
+}
+.button-wrapper {
+  text-align: center;           /* Centers the button horizontally */
+  max-width: 400px;            /* Optionally limit total container width on large screens */
+  margin: 0 auto;              /* Center the container itself if needed */
+  padding: 0 16px;             /* Extra left/right space from the viewport edges */
+}
+
+.getintouch1-btn {
+  display: block;              /* Fills the parent container's width (which is up to 400px) */
+  width: 90%;                  /* Let’s pick 90% to see some spacing, but not too narrow */
+  min-width: 220px;            /* Ensures the button never becomes too narrow on small screens */
+  max-width: 100%;             /* Stays within the container’s padded width */
+  
+  height: 48px;
+  line-height: 48px;           /* Keeps text vertically centered in that height */
+  padding: 0 16px;             /* Internal horizontal padding for the text */
+  
+  background: #343E33;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  
+  margin: 4px 16px 64px;      /* 20px top, auto left/right, 64px bottom */
+}
+
+    /* SECTION 11: Footer */
+    .section11 {
+      background: #1F251E;
+      padding: 40px 16px;
+      color: #8F988F;
+    }
+    .footer-top {
+      margin-bottom: 20px;
+    }
+    .footer-logo {
+      max-width: 150px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: #8F988F;
+      text-decoration: none;
+    }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 24px;
+    }
+    .social-icon {
+      width: 48px;
+      height: 48px;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #CECECE;
+    }
+
+
+/* Red asterisk for required fields */
+.required {
+  color: red;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+/* Overlay behind the bottom sheet */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: opacity 0.3s ease;
+}
+.sheet-overlay.hidden {
+  display: none;
+}
+
+/* Bottom sheet styling */
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+  background: #fff;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  border-radius: 16px 16px 0 0;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: 'Manrope', sans-serif;
+}
+.bottom-sheet.open {
+  transform: translateY(0);
+}
+
+.sheet-content {
+  padding: 24px 20px 32px;
+  position: relative;
+}
+.sheet-close {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+.sheet-content h3 {
+  margin-bottom: 16px;
+  color: #343E33;
+  font-size: 22px;
+  font-weight: 700;
+}
+#ctaForm label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #303030;
+}
+#ctaForm input,
+#ctaForm textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+.sheet-submit {
+  width: 100%;
+  margin-top: 20px;
+  height: 44px;
+  background: #343E33;
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sheet-thanks {
+  margin-top: 12px;
+  color: #2d7a2d;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Mobile first: menu icon visible, nav links hidden */
+.menu-icon {
+  display: block;
+}
+
+.nav-links {
+  display: none;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+/* Force hide mobile menu on desktop */
+@media (min-width: 1024px) {
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .menu-icon {
+    display: none; /* hide hamburger icon */
+  }
+
+  .nav-links {
+    display: flex;
+  }
+
+.header-container {
+      display: flex;
+      padding-left: 120px;
+      padding-right: 120px;
+}
+
+  .image-container {
+    padding: 24px 120px 0;
+  }
+
+  .image-container {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 600px;
+}
+
+.workshop-image {
+  width: 100%;
+  height: 100%; /* stretch to fill container */
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+  .image-details {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  .getintouch1-section {
+    margin-top: 40px;
+  }
+
+  .button-wrapper {
+    padding: 0;
+    margin-top: 20px;
+  }
+
+  .getintouch1-btn {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.button-container {
+    padding-left: 120px;
+    padding-right: 120px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .getintouch1-btn {
+    max-width: 328px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 32px;
+    flex-direction: row;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #303030;
+    text-decoration: none;
+  }
+/* Turn bottom sheet into a centered modal popup on desktop */
+.bottom-sheet {
+  left: 50% !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+  border-radius: 16px !important;
+  max-width: 480px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+.sheet-overlay {
+  align-items: center !important;
+}
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- SECTION 1: Header -->
+  <header class="section1">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <div class="header-container">
+<span id="menuToggle">
+      <img src="menu.png" alt="Menu Icon" class="menu-icon" />
+</span>
+      <a href="index.html">
+  <img src="Alufurnlogo.png" alt="Alufurn Logo" class="logo">
+</a>
+<div id="mobileMenu" class="mobile-menu hidden">
+ <!-- mobile menu links -->
+  <a href="products-interior-doors.html" class="menu-item">Products</a>
+  <a href="experiencecenter.html" class="menu-item">Experience Center</a>
+  <a href="our-workshop.html" class="menu-item">Workshop</a>
+</div>
+
+
+<!-- Desktop Nav Links -->
+<nav class="nav-links">
+  <a href="products-interior-doors.html">Products</a>
+  <a href="experiencecenter.html">Experience Center</a>
+  <a href="our-workshop.html">Workshop</a>
+</nav>
+
+      <button class="get-in-touch-btn">Get in Touch</button>
+    </div>
+  </header>
+  
+  <!-- Our Workshop -->
+ <section class="image-container">
+  <img src="machine2.png" alt="Workshop Image" class="workshop-image" />
+</section>
+
+<!-- Workshop Image -->
+<div class="image-details">
+  <h2>Our Workshop</h2>
+  <p>
+Step into modern living with our experience center; a hands-on showcase of premium aluminum furniture, where design meets durability. Explore stylish wardrobes, modular kitchens, elegant wall panels, and more in real-life settings. Feel the quality, test the functionality, and get inspired by customizable finishes and smart storage solutions. A space where innovation and aesthetics come to life—see, touch, and experience the future of interiors.
+  </p>
+</div>
+</section>
+
+<div class="getintouch1-section">
+      <p class="sub-text">Want to build something impressive?</p>
+      <button class="getintouch1-btn">Book a Consultation</button>
+    </div>
+  </section>
+
+ 
+  <!-- SECTION 11: Footer -->
+  <footer class="section11">
+    <div class="footer-top">
+
+<a href="index.html">
+      <img src="alufurnwhite.png" alt="Footer Logo" class="footer-logo" />
+</a>
+    </div>
+    <div class="footer-links">
+      <a href="products-interior-doors.html">Products</a>
+      <a href="experiencecenter.html">Experience Center</a>
+      <a href="our-workshop.html">Workshop</a>
+    </div>
+    <div class="footer-social">
+      <img src="insta.png" alt="Instagram" class="social-icon" />
+      <img src="facebook.png" alt="Facebook" class="social-icon" />
+      <img src="linkedin.png" alt="LinkedIn" class="social-icon" />
+    </div>
+    <div class="footer-bottom">
+      <p>Crafted with 🤍 in India</p>
+    </div>
+</footer>
+
+<!-- Hidden iframe to handle form submission without leaving the page -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<!-- Sheet Overlay and Bottom Sheet -->
+<div id="sheetOverlay" class="sheet-overlay hidden">
+  <div id="bsheet" class="bottom-sheet">
+    <div class="sheet-content">
+      <button class="sheet-close">×</button>
+      <h3 id="sheetTitle">Let’s chat</h3>
+
+      <form id="ctaForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSc1HUHKeR7l43nxj4PvynI8GFA4bVCmhFNt6fpgY6cR5WXeOw/formResponse"
+        method="POST"
+        target="hidden_iframe">
+
+        <!-- Hidden source tracker -->
+        <input type="hidden" name="entry.602080759" id="formSource">
+
+        <label>Name <span class="required">*</span>
+          <input type="text" name="entry.2005620554" required>
+        </label>
+
+        <label>Phone Number <span class="required">*</span>
+          <input type="tel" name="entry.1166974658" required>
+        </label>
+
+        <label>Email ID <span class="required">*</span>
+          <input type="email" name="entry.1045781291" required>
+        </label>
+
+        <label>City </span>
+          <input type="text" name="entry.1065046570">
+        </label>
+
+        <label>Tell us in a few words what you're looking for </span>
+          <textarea name="entry.839337160" rows="3" required></textarea>
+        </label>
+
+        <button type="submit" class="sheet-submit">Send</button>
+        <p class="sheet-thanks" hidden>Thank you! We’ll be in touch soon.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const map = [
+    { selector: ".getintouch1-btn",    title: "Book a Consultation" },
+    { selector: ".get-in-touch-btn",    title: "Get in Touch" },
+  ];
+
+  const overlay = document.getElementById("sheetOverlay");
+  const sheet = document.getElementById("bsheet");
+  const sheetTitle = document.getElementById("sheetTitle");
+  const formSource = document.getElementById("formSource");
+  const form = document.getElementById("ctaForm");
+  const thanksNote = form.querySelector(".sheet-thanks");
+
+  const openSheet = (title) => {
+    sheetTitle.textContent = title;
+    formSource.value = title;
+    sheet.classList.add("open");
+    overlay.classList.remove("hidden");
+  };
+
+  const closeSheet = () => {
+    sheet.classList.remove("open");
+    overlay.classList.add("hidden");
+    form.reset();
+    thanksNote.hidden = true;
+  };
+
+  map.forEach(({ selector, title }) => {
+    document.querySelectorAll(selector).forEach(btn => {
+      btn.addEventListener("click", () => openSheet(title));
+    });
+  });
+
+  document.querySelector(".sheet-close").addEventListener("click", closeSheet);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeSheet();
+  });
+
+  document.querySelector('iframe[name="hidden_iframe"]').addEventListener("load", () => {
+    thanksNote.hidden = false;
+    setTimeout(closeSheet, 3000);
+  });
+});
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("mobileMenu");
+
+    // Toggle menu on hamburger icon click
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent click from bubbling to document
+      menu.classList.toggle("hidden");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.add("hidden");
+      }
+    });
+
+    // Close menu when any link inside it is clicked
+    document.querySelectorAll('#mobileMenu .menu-item').forEach(item => {
+      item.addEventListener('click', () => {
+        menu.classList.add("hidden");
+      });
+    });
+  });
+</script>
+
+
+
+</body>
+</html>
