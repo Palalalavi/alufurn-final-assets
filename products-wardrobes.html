@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - Wardrobes</title>
+  <!-- Import Manrope and Inter fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Inter:wght@400&display=swap" rel="stylesheet" />
+  <style>
+
+   /* --- Reset and Global Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: #fff;
+      color: #303030;
+      line-height: 1.5;
+    }
+    /* SECTION 1: Header */
+    .section1 {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 48px;
+  padding: 8px 16px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+    .header-container {
+      display: flex;
+      align-items: center;
+    }
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    .logo {
+      width: 128px;
+      height: 13px;
+    }
+    .get-in-touch-btn {
+      margin-left: auto;
+      height: 32px;
+      padding: 0 14px;
+      background: #343E33;
+      color: #ffffff;
+      font-size: 12px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+    }
+
+.mobile-menu {
+  position: absolute;
+  top: 48px; /* below header */
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  padding: 20px 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-item {
+  font-size: 20px;
+  font-weight: 600;
+  color: #303030;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+    
+    /* --- Page Header "Products" --- */
+    .products-title {
+      font-size: 28px;
+      font-weight: 750;
+      color: #303030;
+      margin-bottom: 20px;
+      padding: 20px 16px 0 16px
+    }
+    
+    /* Tabs container: horizontally scrollable, with an 8px gap and specific padding */
+.tabs-container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;  
+  padding: 0 0 20px 16px; /* Top: 0, Right: 0, Bottom: 20px, Left: 16px */
+}
+
+/* Only the tabs container has horizontal scrolling */
+.tabs-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Remove default link styling and inherit color */
+.tab-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Base tab styling */
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;             /* Pill shape */
+  padding: 8px 12px;                /* Top/Bottom: 8px, Left/Right: 12px */
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid transparent;     /* Default border, overridden below */
+  white-space: nowrap;               /* Prevent text wrapping */
+}
+
+/* Selected (active) tab styling */
+.tab.selected {
+  background: #1A2230;               /* Dark fill for selected tab */
+  color: #ffffff;                    /* White text */
+  font-weight: 600;                  /* Semibold */
+  border: 1px solid #1A2230;          /* Border matches the background */
+}
+
+/* Unselected (inactive) tab styling */
+.tab.unselected {
+  background: #ffffff;               /* White fill for unselected tabs */
+  color: #303030;                    /* Dark text */
+  font-weight: 500;                  /* Medium weight */
+  border: 1px solid #C8C8C8;          /* 1px gray stroke */
+}
+
+
+/* --- Product Images --- */
+.image-wrapper {
+  padding: 0 16px; /* Adds 16px on left and right */
+}
+
+.product-image {
+  width: 100%;
+  height: 328px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 20px; /* 20px gap below each image */
+}
+
+/* --- Product Details --- */
+.product-details h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #303030;
+  margin-bottom: 12px;
+  padding: 0 16px; /* 16px padding on sides */
+}
+
+.product-details p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #636363;
+  margin-bottom: 0;
+  padding: 0 16px; /* 16px padding on sides */
+}
+
+/* --- Request Catalogue Button --- */
+.button-container {
+  padding: 0 16px; /* Ensures 16px padding on left/right */
+}
+
+.catalogue-btn {
+  display: inline-block; /* Let it size to content + padding */
+  padding: 0 24px;       /* Horizontal padding inside the button */
+  height: 48px;
+  width: 100%;
+  background: #ffffff;   /* White background; change if needed */
+  color: #425542;        /* Text color */
+  font-size: 18px;
+  font-weight: 500;
+  border: 2px solid #425542;
+  border-radius: 40px;
+  cursor: pointer;
+  margin: 20px auto 40px; /* 20px top gap, auto left/right to center, 40px bottom gap */
+}
+
+.catalogue-btn:hover {
+  opacity: 0.9;          /* Optional hover effect */
+}
+
+
+body {
+      overflow-x: hidden;
+    }
+    /* SECTION 11: Footer */
+    .section11 {
+      background: #1F251E;
+      padding: 40px 16px;
+      color: #8F988F;
+    }
+    .footer-top {
+      margin-bottom: 20px;
+    }
+    .footer-logo {
+      max-width: 150px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: #8F988F;
+      text-decoration: none;
+    }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 24px;
+    }
+    .social-icon {
+      width: 48px;
+      height: 48px;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #CECECE;
+    }
+
+
+/* Red asterisk for required fields */
+.required {
+  color: red;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+/* Overlay behind the bottom sheet */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: opacity 0.3s ease;
+}
+.sheet-overlay.hidden {
+  display: none;
+}
+
+/* Bottom sheet styling */
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+  background: #fff;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  border-radius: 16px 16px 0 0;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: 'Manrope', sans-serif;
+}
+.bottom-sheet.open {
+  transform: translateY(0);
+}
+
+.sheet-content {
+  padding: 24px 20px 32px;
+  position: relative;
+}
+.sheet-close {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+.sheet-content h3 {
+  margin-bottom: 16px;
+  color: #343E33;
+  font-size: 22px;
+  font-weight: 700;
+}
+#ctaForm label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #303030;
+}
+#ctaForm input,
+#ctaForm textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+.sheet-submit {
+  width: 100%;
+  margin-top: 20px;
+  height: 44px;
+  background: #343E33;
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sheet-thanks {
+  margin-top: 12px;
+  color: #2d7a2d;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Mobile first: menu icon visible, nav links hidden */
+.menu-icon {
+  display: block;
+}
+
+.nav-links {
+  display: none;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+.header-container {
+      display: flex;
+      padding-left: 120px;
+      padding-right: 120px;
+}
+
+  .image-wrapper {
+    display: flex;
+    gap: 16px;
+    padding: 0 120px;
+  }
+
+  .product-image {
+    width: 592px;
+    height: auto;
+  }
+
+  .products-title,
+  .tabs-container,
+  .product-details {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  .button-container {
+    padding-left: 120px;
+    padding-right: 120px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .catalogue-btn {
+    max-width: 328px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 32px;
+    flex-direction: row;
+  }
+
+  .menu-icon {
+    display: none; /* hide menu icon on desktop */
+  }
+
+  .nav-links {
+    display: flex; /* show nav links on desktop */
+    gap: 32px;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #303030;
+    text-decoration: none;
+  }
+
+/* Turn bottom sheet into a centered modal popup on desktop */
+.bottom-sheet {
+  left: 50% !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+  border-radius: 16px !important;
+  max-width: 480px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+.sheet-overlay {
+  align-items: center !important;
+}
+
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- SECTION 1: Header -->
+  <header class="section1">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <div class="header-container">
+<span id="menuToggle">
+      <img src="menu.png" alt="Menu Icon" class="menu-icon" />
+</span>
+      <a href="index.html">
+  <img src="Alufurnlogo.png" alt="Alufurn Logo" class="logo">
+</a>
+<div id="mobileMenu" class="mobile-menu hidden">
+  <a href="products-interior-doors.html" class="menu-item">Products</a>
+  <a href="experiencecenter.html" class="menu-item">Experience Center</a>
+  <a href="our-workshop.html" class="menu-item">Workshop</a>
+</div>
+
+<!-- Desktop Nav Links -->
+<nav class="nav-links">
+  <a href="products-interior-doors.html">Products</a>
+  <a href="experiencecenter.html">Experience Center</a>
+  <a href="our-workshop.html">Workshop</a>
+</nav>
+
+
+      <button class="get-in-touch-btn">Get in Touch</button>
+    </div>
+  </header>
+  
+  <!-- Main Products Page Content -->
+  <div class="main-content">
+    <!-- Page Header -->
+    <h1 class="products-title">Products</h1>
+    
+    <!-- Horizontal Tabs -->
+    <div class="tabs-container">
+  <a href="products-interior-doors.html" class="tab-link">
+    <div class="tab unselected">Interior Doors</div>
+  </a>
+  <a href="products-wall-panels.html" class="tab-link">
+    <div class="tab unselected">Wall Panels</div>
+  </a>
+  <a href="products-wardrobes.html" class="tab-link">
+    <div class="tab selected">Wardrobes</div>
+  </a>
+  <a href="products-modular-kitchen.html" class="tab-link">
+    <div class="tab unselected">Modular Kitchen</div>
+  </a>
+  <a href="products-bathroom-vanity.html" class="tab-link">
+    <div class="tab unselected">Bathroom Vanity</div>
+  </a>
+</div>
+<!-- Product Images -->
+<div class="image-wrapper">
+  <img src="wardrobe1.png" alt="Wardrobe - Image 1" class="product-image" />
+  <img src="wardrobe2.png" alt="Wardrobe - Image 2" class="product-image" />
+</div>
+
+<!-- Product Details -->
+<div class="product-details">
+  <h2>Wardrobes</h2>
+  <p>
+    Redefine organization with sleek aluminum wardrobes that offer a perfect balance of durability and design. Engineered to resist moisture, rust, and daily wear, they feature customizable interiors, smooth-sliding doors, and a modern finish that enhances any space. Whether for a minimalist look or a bold statement, these wardrobes bring effortless elegance and long-lasting functionality.
+  </p>
+</div>
+
+<!-- Request Catalogue Button -->
+<div class="button-container">
+  <button class="catalogue-btn">Request Catalogue</button>
+</div>
+ 
+  <!-- SECTION 11: Footer -->
+  <footer class="section11">
+    <div class="footer-top">
+      <a href="index.html">
+      <img src="alufurnwhite.png" alt="Footer Logo" class="footer-logo">
+</a>
+    </div>
+    <div class="footer-links">
+      <a href="products-interior-doors.html">Products</a>
+      <a href="experiencecenter.html">Experience Center</a>
+      <a href="our-workshop.html">Workshop</a>
+    </div>
+    <div class="footer-social">
+      <img src="insta.png" alt="Instagram" class="social-icon" />
+      <img src="facebook.png" alt="Facebook" class="social-icon" />
+      <img src="linkedin.png" alt="LinkedIn" class="social-icon" />
+    </div>
+    <div class="footer-bottom">
+      <p>Crafted with 🤍 in India</p>
+    </div>
+<script> 
+  // Select all tab links
+  const tabLinks = document.querySelectorAll('.tab-link');
+  
+  tabLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      // Uncomment the next line if you do not want the page to navigate instantly.
+      // e.preventDefault();
+      
+      // Remove 'selected' class from all tabs and add 'unselected'
+      tabLinks.forEach(l => {
+        const tab = l.querySelector('.tab');
+        tab.classList.remove('selected');
+        tab.classList.add('unselected');
+      });
+      
+      // Add 'selected' to the clicked tab and remove 'unselected'
+      const currentTab = link.querySelector('.tab');
+      currentTab.classList.remove('unselected');
+      currentTab.classList.add('selected');
+    });
+  });
+</script>
+</footer>
+
+<!-- Hidden iframe to handle form submission without leaving the page -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<!-- Sheet Overlay and Bottom Sheet -->
+<div id="sheetOverlay" class="sheet-overlay hidden">
+  <div id="bsheet" class="bottom-sheet">
+    <div class="sheet-content">
+      <button class="sheet-close">×</button>
+      <h3 id="sheetTitle">Let’s chat</h3>
+
+      <form id="ctaForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSc1HUHKeR7l43nxj4PvynI8GFA4bVCmhFNt6fpgY6cR5WXeOw/formResponse"
+        method="POST"
+        target="hidden_iframe">
+
+        <!-- Hidden source tracker -->
+        <input type="hidden" name="entry.602080759" id="formSource">
+
+        <label>Name <span class="required">*</span>
+          <input type="text" name="entry.2005620554" required>
+        </label>
+
+        <label>Phone Number <span class="required">*</span>
+          <input type="tel" name="entry.1166974658" required>
+        </label>
+
+        <label>Email ID <span class="required">*</span>
+          <input type="email" name="entry.1045781291" required>
+        </label>
+
+        <label>City </span>
+          <input type="text" name="entry.1065046570">
+        </label>
+
+        <label>Tell us in a few words what you're looking for </span>
+          <textarea name="entry.839337160" rows="3" required></textarea>
+        </label>
+
+        <button type="submit" class="sheet-submit">Send</button>
+        <p class="sheet-thanks" hidden>Thank you! We’ll be in touch soon.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const map = [
+    { selector: ".catalogue-btn",    title: "Request Catalogue" },
+    { selector: ".get-in-touch-btn",    title: "Get in Touch" },
+  ];
+
+  const overlay = document.getElementById("sheetOverlay");
+  const sheet = document.getElementById("bsheet");
+  const sheetTitle = document.getElementById("sheetTitle");
+  const formSource = document.getElementById("formSource");
+  const form = document.getElementById("ctaForm");
+  const thanksNote = form.querySelector(".sheet-thanks");
+
+  const openSheet = (title) => {
+    sheetTitle.textContent = title;
+    formSource.value = title;
+    sheet.classList.add("open");
+    overlay.classList.remove("hidden");
+  };
+
+  const closeSheet = () => {
+    sheet.classList.remove("open");
+    overlay.classList.add("hidden");
+    form.reset();
+    thanksNote.hidden = true;
+  };
+
+  map.forEach(({ selector, title }) => {
+    document.querySelectorAll(selector).forEach(btn => {
+      btn.addEventListener("click", () => openSheet(title));
+    });
+  });
+
+  document.querySelector(".sheet-close").addEventListener("click", closeSheet);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeSheet();
+  });
+
+  document.querySelector('iframe[name="hidden_iframe"]').addEventListener("load", () => {
+    thanksNote.hidden = false;
+    setTimeout(closeSheet, 3000);
+  });
+});
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("mobileMenu");
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
