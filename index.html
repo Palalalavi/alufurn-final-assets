@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page</title>
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Manrope', sans-serif;
+      color: #303030;
+      line-height: 1.5;
+    }
+    button {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    
+    /* SECTION 1: Header */
+    .section1 {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 48px;
+  padding: 8px 16px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+    .header-container {
+      display: flex;
+      align-items: center;
+    }
+    .menu-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    .logo {
+      width: 128px;
+      height: 13px;
+    }
+    .get-in-touch-btn {
+      margin-left: auto;
+      height: 32px;
+      padding: 0 14px;
+      background: #343E33;
+      color: #ffffff;
+      font-size: 12px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+    }
+
+.mobile-menu {
+  position: absolute;
+  top: 48px; /* below header */
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  padding: 20px 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-item {
+  font-size: 20px;
+  font-weight: 600;
+  color: #303030;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Hide menu on desktop */
+@media (min-width: 1024px) {
+  .mobile-menu {
+    display: none !important;
+  }
+  .menu-icon {
+    display: none;
+  }
+}
+
+    
+    /* SECTION 2: Background Video with Overlay */
+    .section2 {
+      padding: 0 0px;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-container {
+      position: relative;
+      height: 800px;
+    }
+    .bg-video {
+      width: 100%;
+      height: 800px;
+      object-fit: cover;
+    }
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 800px;
+      background: rgba(33,33,33, 0.67); /* 67% opacity */
+    }
+    .video-text {
+      position: absolute;
+      bottom: 40px;
+      left: 16px;
+      right: 16px;
+      text-align: center;
+    }
+    .video-text .main-text {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .video-text .sub-text {
+      font-size: 16px;
+      font-weight: 400;
+      color: #ffffff;
+      margin-top: 8px;
+      margin-bottom: 40px;
+    }
+    .quote-btn {
+      height: 48px;
+      width: 100%;
+      max-width: 400px;
+      background: #ffffff;
+      color: #343E33;
+      font-size: 18px;
+      font-weight: 500;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      margin: 0 auto;
+    }
+    
+    /* SECTION 3: Trust Icons */
+    .section3 {
+      padding: 40px 16px;
+      background: #EEEEEE;
+      text-align: center;
+    }
+    .section3 .section-header {
+      font-size: 24px;
+      font-weight: 800;
+      color: #303030;
+    }
+    .trust-icons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 16px;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .trust-icon {
+      width: 72px;
+      height: 72px;
+    }
+    .trust-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: #2D2D2D;
+      margin-top: 8px;
+    }
+    
+    /* SECTION 4: Bestsellers (existing styles) */
+.section4 {
+  padding: 40px 16px 0 16px;
+}
+.section4 .section-header.left {
+  font-size: 22px;
+  font-weight: 600;
+  color: #303030;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.product-image-wrapper {
+  position: relative;
+  /* NEW: Start hidden and moved down for the animation */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.product-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.product-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.catalogue-btn {
+  height: 48px;
+  width: 100%;
+  background: #ffffff;
+  color: #425542;
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid #425542;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.bestseller-link {
+  position: relative;
+  display: block;
+}
+
+.bestseller-arrow {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+}
+
+
+/* NEW: When visible, animate into full view */
+.product-image-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+    
+    /* SECTION 5: Rotating Adjectives Banner */
+    .section5, .section10 {
+      padding: 40px 0;
+      text-align: center;
+    }
+    /* Container that masks overflow */
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      background: #fff;        /* Optional background */
+      height: 77px;            /* Set the height to match your design */
+      display: flex;
+      align-items: center;     /* Center vertically */
+    }
+
+    /* The element that will be animated */
+    .marquee {
+      display: flex;
+     /* Let the content define the width */
+     width: max-content;
+     animation: marqueeAnimation 15s linear infinite;
+    }
+
+    /* Each copy of the text */
+    .marquee-group {
+      display: flex;
+    }
+
+    /* Style individual words */
+    .marquee-group span {
+      display: inline-block;
+      padding: 0 12px;        /* Adjust spacing between words */
+      font-size: 77px;        /* Adjust font size as needed */
+      font-weight: 700;
+      font-family: 'Manrope', sans-serif;
+      color: #9CA49F;
+    }
+
+    /* The animation: move to left by 100% of one group’s width */
+    @keyframes marqueeAnimation {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+     }
+ 
+    
+    /* SECTION 6: Feature Icons Grid */
+    .section6 {
+      padding: 40px 16px;
+      background: #1A2230;
+      text-align: center;
+    }
+      .section6 .section-header {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .feature-item {
+      width: calc(50% - 16px);
+      text-align: center;
+    }
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+    }
+    .feature-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: #DAE3E7;
+      margin-top: 12px;
+    }
+    
+    /* SECTION 7: Inspiration */
+    .section7 {
+      padding: 0 16px;
+    }
+    /* RELEVANT SECTION 7 STYLES (header, button, etc.) */
+    .section7 {
+    padding: 0 16px 40px 16px;
+    }
+    .section7 .section-header {
+     font-size: 24px;
+     font-weight: 800;
+     color: #303030;
+     margin-bottom: 20px;
+    }
+    .dotted-rectangle {
+     height: 142px;
+     border: 2px dashed #1A2230;
+     background: #EEEEEE;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 20px;
+    }
+    .inspo-button-section {
+     text-align: center;
+    }
+    .inspo-button-section .sub-text {
+     font-size: 16px;
+     color: #777777;
+     margin-bottom: 4px;
+    }
+    .build-btn {
+     height: 48px;
+     width: 100%;
+     max-width: 400px;
+     background: #343E33;
+     color: #ffffff;
+     font-size: 16px;
+     font-weight: 600;
+     border: none;
+     border-radius: 20px;
+     cursor: pointer;
+    }
+
+    /* THE IMPORTANT PART: CUSTOM GRID FOR YOUR IMAGES */
+    .inspo-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr; /* Two columns */
+     grid-gap: 16px;                /* Spacing between grid cells */
+     margin-bottom: 20px;
+    }
+
+    .inspo-img {
+     width: 100%;
+     display: block;
+     border-radius: 12px;
+     object-fit: cover;
+    }
+
+    /* Manually position each image with grid lines. */
+
+    /* item1: tall image on the left, spanning two rows (rows 1 to 3) */
+    .item1 {
+     grid-column: 1;      /* left column */
+     grid-row: 1 / 3;     /* spans row 1 to row 3 (i.e., two rows tall) */
+    }
+
+    /* item2: top-right image (first row, second column) */
+    .item2 {
+     grid-column: 2;
+     grid-row: 1;
+    } 
+
+    /* item3: middle-right image (second row, second column) */
+    .item3 {
+     grid-column: 2;
+     grid-row: 2;
+    }
+
+    /* item4: middle-left image (second row, first column) */
+    .item4 {
+     grid-column: 1;
+     grid-row: 2;
+align-self: end;     /* push it to the bottom of row 2 */
+    }
+
+    /* item5: large image across both columns on row 4 */
+    .item5 {
+     grid-column: 1 / 3;
+     grid-row: 4;
+    }
+
+    .dotted-rectangle {
+      height: 142px;
+      border: 2px dashed #1A2230;
+      border-radius: 20px;
+      background: #EEEEEE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .inspo-button-section {
+      text-align: center;
+    }
+    .inspo-button-section .sub-text {
+      font-size: 16px;
+      color: #777777;
+      margin-bottom: 4px;
+    }
+    .build-btn {
+      height: 48px;
+      width: 100%;
+      max-width: 400px;
+      background: #343E33;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 500;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    
+    /* SECTION 8: Your Space, Your Way */
+.section8 {
+  padding: 40px 16px;
+  background: #EEEEEE;
+}
+.section8 .section-header {
+  font-size: 24px;
+  font-weight: 800;
+  color: #303030;
+  margin-bottom: 20px;
+}
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Modified step-item for lazy animation */
+.step-item {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  
+  /* Use Flex in a column to stack icon and text */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;  /* Keep both left-aligned */
+  
+  /* Set a fixed or minimum height so the card has room to push text down */
+  min-height: 100px; /* Adjust as desired */
+
+  /* NEW: Start hidden and moved down */
+  opacity: 0;
+  transform: translateY(20px);
+  /* NEW: Transition to animate the opacity and transform */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* When the card should appear, add the .visible class */
+.step-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.step-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #303030;
+}
+
+.consultation-section {
+  text-align: center;
+  margin-top: 20px;
+}
+.consultation-section .sub-text {
+  font-size: 16px;
+  color: #777777;
+  margin-bottom: 4px;
+}
+.consultation-btn {
+  height: 48px;
+  width: 100%;
+  max-width: 400px;
+  background: #343E33;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+    
+    /* SECTION 9: Innovation and Machines */
+    .section9 {
+      padding: 40px 16px 0 16px;
+    }
+    .section9 .section-header {
+      font-size: 24px;
+      font-weight: 800;
+      color: #303030;
+      margin-bottom: 20px;
+    }
+    .machine-container {
+      /* Remove display: flex/grid to make .machine-items stack */
+      /* e.g. no special layout property here */
+    }
+    .machine-item {
+      margin-bottom: 20px; /* add vertical space */
+    }
+    .machine-img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .machine-name {
+      font-size: 20px;
+      font-weight: 550;
+      color: #303030;
+      margin-top: 16px;
+    }
+    .machine-desc {
+      font-size: 14px;
+      color: #303030;
+      margin-top: 4px;
+    }
+    .machine-button-section {
+      text-align: center;
+    }
+    .machine-button-section .sub-text {
+      font-size: 16px;
+      color: #777777;
+      margin-bottom: 4px;
+    }
+    .connect-btn {
+      height: 48px;
+      width: 100%;
+      max-width: 400px;
+      background: #343E33;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 500;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    
+    /* SECTION 10: Rotating Banner (reuse Section 5 styles) */
+    /* Already defined under .section5 styles */
+    
+    /* SECTION 11: Footer */
+    .section11 {
+      background: #1F251E;
+      padding: 40px 16px;
+      color: #8F988F;
+    }
+    .footer-top {
+      margin-bottom: 20px;
+    }
+    .footer-logo {
+      max-width: 150px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: #8F988F;
+      text-decoration: none;
+    }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 24px;
+    }
+    .social-icon {
+      width: 48px;
+      height: 48px;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #CECECE;
+    }
+
+
+/* Red asterisk for required fields */
+.required {
+  color: red;
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+/* Overlay behind the bottom sheet */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: opacity 0.3s ease;
+}
+.sheet-overlay.hidden {
+  display: none;
+}
+
+/* Bottom sheet styling */
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+  background: #fff;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  border-radius: 16px 16px 0 0;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: 'Manrope', sans-serif;
+}
+.bottom-sheet.open {
+  transform: translateY(0);
+}
+
+.sheet-content {
+  padding: 24px 20px 32px;
+  position: relative;
+}
+.sheet-close {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+.sheet-content h3 {
+  margin-bottom: 16px;
+  color: #343E33;
+  font-size: 22px;
+  font-weight: 700;
+}
+#ctaForm label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #303030;
+}
+#ctaForm input,
+#ctaForm textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+.sheet-submit {
+  width: 100%;
+  margin-top: 20px;
+  height: 44px;
+  background: #343E33;
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sheet-thanks {
+  margin-top: 12px;
+  color: #2d7a2d;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+
+
+/* Default: Hide desktop-only sections on mobile */
+.section2-desktop,
+.section3-desktop,
+.section4-desktop,
+.section6-desktop,
+.section8-desktop,
+.section9-desktop {
+  display: none;
+}
+
+
+
+
+/* Mobile-first: allow the <br> */
+.desktop-hide-break {
+  display: inline;
+}
+
+/* On desktop, hide the <br> to force single-line */
+@media (min-width: 1024px) {
+  .desktop-hide-break {
+    display: none;
+  }
+}
+
+/* Mobile first: menu icon visible, nav links hidden */
+.menu-icon {
+  display: block;
+}
+
+.nav-links {
+  display: none;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+.header-container {
+      display: flex;
+      padding-left: 120px;
+      padding-right: 120px;
+}
+
+  .image-wrapper {
+    display: flex;
+    gap: 16px;
+    padding: 0 120px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* SECTION 1: Hero with Background Video */
+  .section2 {
+    padding: 0;
+  }
+
+  .video-container {
+    height: 800px;
+    position: relative;
+  }
+
+  .bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-overlay {
+    height: 100%;
+  }
+
+  .video-text {
+    position: absolute;
+    bottom: 120px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .video-text .main-text {
+    font-size: 48px;
+    font-weight: 800;
+  }
+
+  .video-text .sub-text {
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 8px;
+    margin-bottom: 32px;
+  }
+
+  .quote-btn {
+    max-width: 328px;
+    height: 52px;
+    font-size: 16px;
+  }
+
+  /* SECTION 2: Why Trust Us */
+  .section3 {
+    height: 185px;
+    padding: 0 120px;
+    background: #f3f3f3;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .section3 .section-header {
+    font-size: 32px;
+    font-weight: 800;
+    color: #303030;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .trust-icons {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* Adjust spacing as needed */
+    align-items: flex-start;
+    padding: 0 120px;
+  }
+
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px; /* Give enough width to prevent text from wrapping */
+  }
+
+  .trust-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #2D2D2D;
+    margin-top: 12px;
+    text-align: center;
+    white-space: nowrap; /* Prevent line breaks */
+
+  }
+/* Hide mobile version */
+.section4 {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .section4 {
+    display: none;
+  }
+
+  .section4-desktop {
+    display: block;
+  }
+}
+
+
+/* Desktop Bestseller Styles */
+.section4-desktop {
+  padding: 120px;
+  padding-top: 80px;
+  padding-bottom: 0;
+  background: #fff;
+}
+
+.section-header-desktop {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #303030;
+}
+
+.bestseller-scroll-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 40px; /* creates gap for fixed elements */
+}
+
+/* Hide scrollbar - works on Chrome, Safari, Edge */
+.bestseller-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar - Firefox */
+.bestseller-scroll-container {
+  scrollbar-width: none; /* Firefox */
+}
+
+.bestseller-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+}
+
+.bestseller-image-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.bestseller-image {
+  width: 390px;
+  height: 476px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.bestseller-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* Dots and Button Below Scroll */
+.bestseller-fixed-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.scroll-track {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.scroll-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c4c4c4;
+  transition: background 0.3s ease;
+}
+
+.scroll-dot.active {
+  background: #343E33;
+}
+
+.catalogue-btn.desktop-only {
+  height: 48px;
+  width: 100%;
+  max-width: 320px;
+  background: #ffffff;
+  color: #425542;
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid #425542;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+
+@media (min-width: 1024px) {
+  .section6 {
+    display: none;
+  }
+
+  .section6-desktop {
+    padding-top: 80px;
+    Padding-right: 120px;
+    Padding-bottom: 80px;
+    Padding-left: 120px;
+    background: #1A2230;
+    text-align: center;
+  }
+
+@media (min-width: 1024px) {
+  .section5,
+  .section10 {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+  .section6-desktop .section-header-desktop {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 60px;
+  }
+
+  .feature-grid-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .feature-item-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+  }
+
+  .feature-icon-desktop {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .feature-text-desktop {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #DAE3E7;
+    text-align: center;
+  }
+/* Show only one version at a time */
+
+/* Hide desktop version by default */
+.section6-desktop {
+  display: none;
+}
+
+/* Hide mobile version on desktop */
+@media (min-width: 1024px) {
+  .section6 {
+    display: none;
+  }
+  .section6-desktop {
+    display: block;
+  }
+
+
+/* SECTION 8: Your Space, Your Way (Desktop Only) */
+.section8-desktop {
+  padding-top: 80px;
+  Padding-right: 120px;
+  Padding-left: 120px;
+  Padding-bottom: 80px;
+  background: #EEEEEE;
+}
+
+.section-header-desktop {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: #303030;
+  text-align: center;
+}
+
+.steps-desktop {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.step-desktop {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 180px;
+  flex-shrink: 0;
+}
+
+.step-icon-desktop {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+.step-text-desktop {
+  font-size: 16px;
+  font-weight: 500;
+  color: #303030;
+}
+
+.consultation-section-desktop {
+  text-align: center;
+}
+
+.sub-text-desktop {
+  font-size: 16px;
+  color: #777777;
+  margin-bottom: 8px;
+}
+
+.consultation-btn-desktop {
+  height: 48px;
+  width: 100%;
+  max-width: 320px;
+  background: #343E33;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/* Show only one version at a time */
+
+/* Hide desktop version by default */
+.section8-desktop {
+  display: none;
+}
+
+/* Hide mobile version on desktop */
+@media (min-width: 1024px) {
+  .section8 {
+    display: none;
+  }
+  .section8-desktop {
+    display: block;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .section9 {
+    display: none;
+  }
+
+  .section9-desktop {
+    display: block;
+    padding-top: 120px;
+    padding-right: 120px;
+    padding-bottom: 0;
+    padding-left: 120px;
+    background: #ffffff;
+  }
+
+  .section9-desktop .section-header-desktop {
+    font-size: 32px;
+    font-weight: 800;
+    color: #303030;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  .machine-item-desktop {
+    width: calc(50% - 12px);
+  }
+
+  .machine-grid-desktop {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .machine-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .machine-img-cover {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .machine-name-desktop {
+    font-size: 20px;
+    font-weight: 600;
+    color: #303030;
+    margin-top: 20px;
+  }
+
+  .machine-desc-desktop {
+    font-size: 14px;
+    color: #555;
+    margin-top: 8px;
+  }
+
+  .machine-button-section-desktop {
+    text-align: center;
+  }
+
+  .sub-text-desktop {
+    font-size: 16px;
+    color: #777777;
+    margin-bottom: 8px;
+  }
+
+  .connect-btn-desktop {
+    height: 48px;
+    width: 100%;
+    max-width: 320px;
+    background: #343E33;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section7 {
+    Padding-top: 0;
+    Padding-right: 120px;
+    Padding-bottom: 120px;
+    Padding-left: 120px;
+    background: #ffffff;
+  }
+
+  .section7 .section-header {
+    font-size: 28px;
+    font-weight: 800;
+    color: #303030;
+    margin-bottom: 40px;
+  }
+
+  .inspo-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .inspo-img {
+    width: 220px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .dotted-rectangle {
+    height: 260px;
+    border: 2px dashed #1A2230;
+    border-radius: 20px;
+    background: #EEEEEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #303030;
+  }
+
+  .inspo-button-section {
+    text-align: center;
+  }
+
+  .inspo-button-section .sub-text {
+    font-size: 16px;
+    color: #777777;
+    margin-bottom: 8px;
+  }
+
+  .build-btn {
+    height: 48px;
+    width: 100%;
+    max-width: 320px;
+    background: #343E33;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
+
+  .footer-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 32px;
+    flex-direction: row;
+  }
+
+  .menu-icon {
+    display: none; /* hide menu icon on desktop */
+  }
+
+  .nav-links {
+    display: flex; /* show nav links on desktop */
+    gap: 32px;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #303030;
+    text-decoration: none;
+  }
+
+/* Turn bottom sheet into a centered modal popup on desktop */
+@media (min-width: 1024px) {
+.bottom-sheet {
+  left: 50% !important;
+  top: 50% !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+  border-radius: 16px !important;
+  max-width: 480px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+.sheet-overlay {
+  align-items: center !important;
+}
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- SECTION 1: Header -->
+  <header class="section1">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <div class="header-container">
+<span id="menuToggle">
+      <img src="menu.png" alt="Menu Icon" class="menu-icon" />
+</span>
+      <a href="index.html">
+  <img src="Alufurnlogo.png" alt="Alufurn Logo" class="logo">
+</a>
+<div id="mobileMenu" class="mobile-menu hidden">
+  <a href="products-interior-doors.html" class="menu-item">Products</a>
+  <a href="experiencecenter.html" class="menu-item">Experience Center</a>
+  <a href="our-workshop.html" class="menu-item">Workshop</a>
+</div>
+
+<!-- Desktop Nav Links -->
+<nav class="nav-links">
+  <a href="products-interior-doors.html">Products</a>
+  <a href="experiencecenter.html">Experience Center</a>
+  <a href="our-workshop.html">Workshop</a>
+</nav>
+
+      <button class="get-in-touch-btn">Get in Touch</button>
+    </div>
+  </header>
+
+
+
+  <!-- SECTION 2: Background Video with Overlay -->
+  <section class="section2">
+    <div class="video-container">
+      <video src="background.mp4" autoplay muted loop class="bg-video"></video>
+      <div class="video-overlay"></div>
+      <div class="video-text">
+        <h2 class="main-text">Don’t just dream it, live it!</h2>
+        <p class="sub-text">Premium Personalisation for your space</p>
+        <button class="quote-btn">Get A Quote</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Trust Icons -->
+  <section class="section3">
+    <h2 class="section-header center">Why Trust Us</h2>
+    <div class="trust-icons">
+      <div class="trust-item">
+        <img src="Lifetimewarranty.png" alt="Lifetime Warranty*" class="trust-icon" />
+        <p class="trust-text">Lifetime<br>Warranty*</p>
+      </div>
+      <div class="trust-item">
+        <img src="certifiedquality.png" alt="Certified Quality" class="trust-icon" />
+        <p class="trust-text">Certified<br>Quality</p>
+      </div>
+      <div class="trust-item">
+        <img src="timelydelivery.png" alt="Timely Delivery" class="trust-icon" />
+        <p class="trust-text">Timely<br>Delivery</p>
+      </div>
+      <div class="trust-item">
+        <img src="fixedpricing.png" alt="Fixed Pricing" class="trust-icon" />
+        <p class="trust-text">Fixed<br>Pricing</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Bestsellers -->
+  <section class="section4">
+    <h2 class="section-header left">Our Bestsellers</h2>
+    <div class="product">
+
+      <div class="product-image-wrapper">
+<a href="products-interior-doors.html" class="bestseller-link">
+<img src="interiordoors1.png" alt="Interior Doors" class="product-image" />
+<img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+</a>
+<p class="product-text">Interior Doors</p>
+ </div>
+
+
+      <div class="product-image-wrapper" class="bestseller-link">
+<a href="products-wall-panels.html">
+<img src="wallpanels1.png" alt="Wall Panels" class="product-image" />
+<img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+</a>
+<p class="product-text">Wall Panels</p>
+</div>
+
+      <div class="product-image-wrapper">
+<a href="products-wardrobes.html"  class="bestseller-link">
+<img src="wardrobes1.png" alt="Wardrobes" class="product-image" />
+<img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+</a>
+<p class="product-text">Wardrobes</p>
+</div>
+
+      <div class="product-image-wrapper">
+<a href="products-modular-kitchen.html" class="bestseller-link">
+  <img src="modularkitchen1.png" alt="Modular Kitchen" class="product-image" />
+  <img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+</a>
+<p class="product-text">Modular Kitchen</p>
+</div>
+
+
+      <div class="product-image-wrapper">
+<a href="products-bathroom-vanity.html" class="bestseller-link">
+<img src="bathroomvanity1.png" alt="Bathroom Vanity" class="product-image" />
+<img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+</a>
+<p class="product-text">Bathroom Vanity</p>
+</div>
+    </div>
+    <button class="catalogue-btn">Download Catalogue</button>
+  </section>
+
+
+
+<!-- SECTION 4: Bestsellers (Desktop Only) -->
+<section class="section4-desktop">
+  <h2 class="section-header-desktop">Our Bestsellers</h2>
+
+  <div class="bestseller-scroll-container">
+    <div class="bestseller-track">
+
+      <div class="bestseller-image-wrapper">
+        <a href="products-interior-doors.html" class="bestseller-link">
+          <img src="interiordoors1.png" alt="Interior Doors" class="bestseller-image" />
+          <p class="bestseller-text">Interior Doors</p>
+          <img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+        </a>
+      </div>
+
+      <div class="bestseller-image-wrapper">
+        <a href="products-wall-panels.html">
+          <img src="wallpanels1.png" alt="Wall Panels" class="bestseller-image" />
+          <p class="bestseller-text">Wall Panels</p>
+          <img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+        </a>
+      </div>
+
+      <div class="bestseller-image-wrapper">
+        <a href="products-wardrobes.html">
+          <img src="wardrobes1.png" alt="Wardrobes" class="bestseller-image" />
+          <p class="bestseller-text">Wardrobes</p>
+          <img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+        </a>
+      </div>
+
+      <div class="bestseller-image-wrapper">
+        <a href="products-modular-kitchen.html">
+          <img src="modularkitchen1.png" alt="Modular Kitchen" class="bestseller-image" />
+          <p class="bestseller-text">Modular Kitchen</p>
+          <img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+        </a>
+      </div>
+
+      <div class="bestseller-image-wrapper">
+        <a href="products-bathroom-vanity.html">
+          <img src="bathroomvanity1.png" alt="Bathroom Vanity" class="bestseller-image" />
+          <p class="bestseller-text">Bathroom Vanity</p>
+          <img src="right arrow.png" alt="arrow" class="bestseller-arrow" />
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Fixed Elements Below Scroll -->
+  <div class="bestseller-fixed-elements">
+    <div class="scroll-track">
+      <span class="scroll-dot active"></span>
+      <span class="scroll-dot"></span>
+      <span class="scroll-dot"></span>
+      <span class="scroll-dot"></span>
+      <span class="scroll-dot"></span>
+    </div>
+    <button class="catalogue-btn desktop-only">Download Catalogue</button>
+  </div>
+</section>
+
+
+  <!-- SECTION 5: Rotating Adjectives Banner -->
+  <section class="section5">
+    <div class="marquee-container">
+  <div class="marquee">
+    <div class="marquee-group">
+      <span>Sturdy</span>
+      <span>Chic</span>
+      <span>Minimal</span>
+      <span>Sustainable</span>
+    </div>
+    <div class="marquee-group">
+      <span>Sturdy</span>
+      <span>Chic</span>
+      <span>Minimal</span>
+      <span>Sustainable</span>
+    </div>
+   </div>
+ </div>
+</section>
+
+
+
+  <!-- SECTION 6: Feature Icons (3 rows x 2 items) -->
+  <section class="section6">
+    <h2 class="section-header">The Alufurn Advantage</h2>
+    <div class="feature-grid">
+      <!-- Row 1 -->
+      <div class="feature-item">
+        <img src="waterproof.png" alt="Waterproof" class="feature-icon" />
+        <p class="feature-text">Waterproof*</p>
+      </div>
+      <div class="feature-item">
+        <img src="fireproof.png" alt="Fireproof A1 Grade" class="feature-icon" />
+        <p class="feature-text">Fireproof A1 Grade*</p>
+      </div>
+      <!-- Row 2 -->
+      <div class="feature-item">
+        <img src="termiteproof.png" alt="Termite/ Borer Proof" class="feature-icon" />
+        <p class="feature-text">Termite/ Borer Proof*</p>
+      </div>
+      <div class="feature-item">
+        <img src="formaldehydefree.png" alt="Formaldehyde-free Products" class="feature-icon" />
+        <p class="feature-text">Formaldehyde-free Products*</p>
+      </div>
+      <!-- Row 3 -->
+      <div class="feature-item">
+        <img src="antideformation.png" alt="Anti Deformation" class="feature-icon" />
+        <p class="feature-text">Anti Deformation*</p>
+      </div>
+      <div class="feature-item">
+        <img src="ecofriendly.png" alt="Eco-Friendly, Recyclable Materials" class="feature-icon" />
+        <p class="feature-text">Eco-Friendly, Recyclable*</p>
+      </div>
+    </div>
+  </section>
+
+<!-- SECTION 6: The Alufurn Advantage (Desktop Only) -->
+<section class="section6-desktop">
+  <h2 class="section-header-desktop">The Alufurn Advantage</h2>
+  <div class="feature-grid-desktop">
+    <div class="feature-item-desktop">
+      <img src="waterproof.png" alt="Waterproof" class="feature-icon-desktop" />
+      <p class="feature-text-desktop">Waterproof*</p>
+    </div>
+    <div class="feature-item-desktop">
+      <img src="fireproof.png" alt="Fireproof A1 Grade" class="feature-icon-desktop" />
+      <p class="feature-text-desktop">Fireproof A1 Grade*</p>
+    </div>
+    <div class="feature-item-desktop">
+      <img src="termiteproof.png" alt="Termite/ Borer Proof" class="feature-icon-desktop" />
+      <p class="feature-text-desktop">Termite/ Borer Proof*</p>
+    </div>
+    <div class="feature-item-desktop">
+      <img src="formaldehydefree.png" alt="Formaldehyde-free Products" class="feature-icon-desktop" />
+      <p class="feature-text-desktop">Formaldehyde-free Products*</p>
+    </div>
+    <div class="feature-item-desktop">
+      <img src="antideformation.png" alt="Anti Deformation" class="feature-icon-desktop" />
+      <p class="feature-text-desktop">Anti Deformation*</p>
+    </div>
+    <div class="feature-item-desktop">
+      <img src="ecofriendly.png" alt="Eco-Friendly, Recyclable Materials" class="feature-icon-desktop" />
+      <p class="feature-text-desktop">Eco-Friendly, Recyclable*</p>
+    </div>
+  </div>
+</section>
+
+
+
+  
+  <!-- SECTION 8: Your Space, Your Way (Steps) -->
+  <section class="section8">
+    <h2 class="section-header">Your Space, Your Way!</h2>
+    <div class="steps-container">
+      <div class="step-item">
+        <img src="step1.png" alt="Step 1" class="step-icon" />
+        <p class="step-text">Tell us what you’re looking for</p>
+      </div>
+      <div class="step-item">
+        <img src="step2.png" alt="Step 2" class="step-icon" />
+        <p class="step-text">Get personalised designs</p>
+      </div>
+      <div class="step-item">
+        <img src="step3.png" alt="Step 3" class="step-icon" />
+        <p class="step-text">Seal the deal!</p>
+      </div>
+      <div class="step-item">
+        <img src="step4.png" alt="Step 4" class="step-icon" />
+        <p class="step-text">Watch it come to life</p>
+      </div>
+      <div class="step-item">
+        <img src="step5.png" alt="Step 5" class="step-icon" />
+        <p class="step-text">The final touches of perfection</p>
+      </div>
+      <div class="step-item">
+        <img src="step6.png" alt="Step 6" class="step-icon" />
+        <p class="step-text">Sit back and enjoy your space!</p>
+      </div>
+    </div>
+    <div class="consultation-section">
+      <p class="sub-text">Got an idea?</p>
+      <button class="consultation-btn">Get a Consultation</button>
+    </div>
+  </section>
+
+<!-- SECTION 8: Your Space, Your Way (Desktop Only) -->
+<section class="section8-desktop">
+  <h2 class="section-header-desktop">Your Space, Your Way!</h2>
+  <div class="steps-desktop">
+    <div class="step-desktop">
+      <img src="step1.png" alt="Step 1" class="step-icon-desktop" />
+      <p class="step-text-desktop">Tell us what you’re looking for</p>
+    </div>
+    <div class="step-desktop">
+      <img src="step2.png" alt="Step 2" class="step-icon-desktop" />
+      <p class="step-text-desktop">Get personalised designs</p>
+    </div>
+    <div class="step-desktop">
+      <img src="step3.png" alt="Step 3" class="step-icon-desktop" />
+      <p class="step-text-desktop">Seal the deal!</p>
+    </div>
+    <div class="step-desktop">
+      <img src="step4.png" alt="Step 4" class="step-icon-desktop" />
+      <p class="step-text-desktop">Watch it come to life</p>
+    </div>
+    <div class="step-desktop">
+      <img src="step5.png" alt="Step 5" class="step-icon-desktop" />
+      <p class="step-text-desktop">The final touches of perfection</p>
+    </div>
+    <div class="step-desktop">
+      <img src="step6.png" alt="Step 6" class="step-icon-desktop" />
+      <p class="step-text-desktop">Sit back and enjoy your space!</p>
+    </div>
+  </div>
+  <div class="consultation-section-desktop">
+    <p class="sub-text-desktop">Got an idea?</p>
+    <button class="consultation-btn">Get a Consultation</button>
+  </div>
+</section>
+
+
+
+
+  <!-- SECTION 9: Innovation and Machines -->
+  <section class="section9">
+    <h2 class="section-header">Innovation meets Excellence</h2>
+    <div class="machine-container">
+      <div class="machine-item">
+        <img src="machine1.png" alt="Machine 1" class="machine-img" />
+        <p class="machine-name">Machine 1</p>
+        <p class="machine-desc">hendrerit id nec maximus sit amet, viverra dui malesuada commodo vitae ex. lacus Donec non</p>
+      </div>
+      <div class="machine-item">
+        <img src="machine2.png" alt="Machine 2" class="machine-img" />
+        <p class="machine-name">Machine 2</p>
+        <p class="machine-desc">hendrerit id nec maximus sit amet, viverra dui malesuada commodo vitae ex. lacus Donec non</p>
+      </div>
+    </div>
+    <div class="machine-button-section">
+      <p class="sub-text">Impressive, right?</p>
+      <button class="connect-btn">Let’s Connect</button>
+    </div>
+  </section>
+
+
+<!-- SECTION 9: Innovation meets Excellence (Desktop Only) -->
+<section class="section9-desktop">
+  <h2 class="section-header-desktop">Innovation meets Excellence</h2>
+  <div class="machine-grid-desktop">
+
+    <div class="machine-item-desktop">
+      <div class="machine-wrapper">
+        <img src="machine1.png" alt="Machine 1" class="machine-img-cover" />
+      </div>
+      <p class="machine-name-desktop">Machine 1</p>
+      <p class="machine-desc-desktop">hendrerit id nec maximus sit amet, viverra dui malesuada commodo vitae ex. lacus Donec non</p>
+    </div>
+
+    <div class="machine-item-desktop">
+      <div class="machine-wrapper">
+        <img src="machine2.png" alt="Machine 2" class="machine-img-cover" />
+      </div>
+      <p class="machine-name-desktop">Machine 2</p>
+      <p class="machine-desc-desktop">hendrerit id nec maximus sit amet, viverra dui malesuada commodo vitae ex. lacus Donec non</p>
+    </div>
+
+  </div>
+
+  <div class="machine-button-section-desktop">
+    <p class="sub-text-desktop">Impressive, right?</p>
+    <button class="connect-btn-desktop">Let’s Connect</button>
+  </div>
+</section>
+
+
+
+
+
+  <!-- SECTION 10: Rotating Adjectives Banner (Reuse Section 5 Styles) -->
+  <section class="section10">
+    <div class="marquee-container">
+  <div class="marquee">
+    <div class="marquee-group">
+      <span>Premium</span>
+      <span>Exquisite</span>
+      <span>Sophisticated</span>
+      <span>Opulent</span>
+    </div>
+    <div class="marquee-group">
+      <span>Premium</span>
+      <span>Exquisite</span>
+      <span>Sophisticated</span>
+      <span>Opulent</span>
+    </div>
+   </div>
+ </div>
+  </section>
+
+
+
+<!-- SECTION 7: Inspiration -->
+  <section class="section7">
+  <h2 class="section-header">Designs that Inspire</h2>
+  <div class="inspo-grid">
+    <img src="inspo1.png" alt="Inspiration 1" class="inspo-img item1" />
+    <img src="inspo2.png" alt="Inspiration 2" class="inspo-img item2" />
+    <img src="inspo3.png" alt="Inspiration 3" class="inspo-img item3" />
+    <img src="inspo4.png" alt="Inspiration 4" class="inspo-img item4" />
+    <img src="inspo5.png" alt="Inspiration 5" class="inspo-img item5" />
+  </div>
+
+  <div class="dotted-rectangle">
+    <p>Your Space</p>
+  </div>
+  <div class="inspo-button-section">
+    <p class="sub-text">Lorem Ipsum</p>
+    <button class="build-btn">Let’s Build Together</button>
+  </div>
+</section>
+
+
+  <!-- SECTION 11: Footer -->
+  <footer class="section11">
+    <div class="footer-top">
+
+<a href="index.html">
+      <img src="alufurnwhite.png" alt="Footer Logo" class="footer-logo">
+</a>
+    </div>
+    <div class="footer-links">
+      <a href="products-interior-doors.html">Products</a>
+      <a href="experiencecenter.html">Experience Center</a>
+      <a href="our-workshop.html">Workshop</a>
+    </div>
+    <div class="footer-social">
+      <img src="insta.png" alt="Instagram" class="social-icon" />
+      <img src="facebook.png" alt="Facebook" class="social-icon" />
+      <img src="linkedin.png" alt="LinkedIn" class="social-icon" />
+    </div>
+    <div class="footer-bottom">
+      <p>Crafted with 🤍 in India</p>
+    </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const options = {
+        root: null,        // The viewport
+        threshold: 0.1     // Trigger when 10% visible
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+
+      document.querySelectorAll(".step-item").forEach(item => {
+        observer.observe(item);
+      });
+    });
+  </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const options = {
+    root: null,
+    threshold: 0.1, // Trigger when 10% is in view
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  // Apply the observer to all product-image-wrapper elements in Section 4
+  document.querySelectorAll(".section4 .product-image-wrapper").forEach(item => {
+    observer.observe(item);
+  });
+});
+</script>
+</footer>
+
+
+
+
+<!-- Hidden iframe to handle form submission without leaving the page -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<!-- Sheet Overlay and Bottom Sheet -->
+<div id="sheetOverlay" class="sheet-overlay hidden">
+  <div id="bsheet" class="bottom-sheet">
+    <div class="sheet-content">
+      <button class="sheet-close">×</button>
+      <h3 id="sheetTitle">Let’s chat</h3>
+
+      <form id="ctaForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSc1HUHKeR7l43nxj4PvynI8GFA4bVCmhFNt6fpgY6cR5WXeOw/formResponse"
+        method="POST"
+        target="hidden_iframe">
+
+        <!-- Hidden source tracker -->
+        <input type="hidden" name="entry.602080759" id="formSource">
+
+        <label>Name <span class="required">*</span>
+          <input type="text" name="entry.2005620554" required>
+        </label>
+
+        <label>Phone Number <span class="required">*</span>
+          <input type="tel" name="entry.1166974658" required>
+        </label>
+
+        <label>Email ID <span class="required">*</span>
+          <input type="email" name="entry.1045781291" required>
+        </label>
+
+        <label>City </span>
+          <input type="text" name="entry.1065046570">
+        </label>
+
+        <label>Tell us in a few words what you're looking for </span>
+          <textarea name="entry.839337160" rows="3" ></textarea>
+        </label>
+
+        <button type="submit" class="sheet-submit">Send</button>
+        <p class="sheet-thanks" hidden>Thank you! We’ll be in touch soon.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const map = [
+    { selector: ".quote-btn",        title: "Get a Quote" },
+    { selector: ".catalogue-btn",    title: "Download Catalogue" },
+    { selector: ".consultation-btn", title: "Get a Consultation" },
+    { selector: ".connect-btn",      title: "Let's Connect" },
+    { selector: ".build-btn",        title: "Let's Build Together" },
+    { selector: ".get-in-touch-btn", title: "Get in Touch"},
+  ];
+
+  const overlay = document.getElementById("sheetOverlay");
+  const sheet = document.getElementById("bsheet");
+  const sheetTitle = document.getElementById("sheetTitle");
+  const formSource = document.getElementById("formSource");
+  const form = document.getElementById("ctaForm");
+  const thanksNote = form.querySelector(".sheet-thanks");
+
+  const openSheet = (title) => {
+    sheetTitle.textContent = title;
+    formSource.value = title;
+    sheet.classList.add("open");
+    overlay.classList.remove("hidden");
+  };
+
+  const closeSheet = () => {
+    sheet.classList.remove("open");
+    overlay.classList.add("hidden");
+    form.reset();
+    thanksNote.hidden = true;
+  };
+
+  map.forEach(({ selector, title }) => {
+    document.querySelectorAll(selector).forEach(btn => {
+      btn.addEventListener("click", () => openSheet(title));
+    });
+  });
+
+  document.querySelector(".sheet-close").addEventListener("click", closeSheet);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeSheet();
+  });
+
+  document.querySelector('iframe[name="hidden_iframe"]').addEventListener("load", () => {
+    thanksNote.hidden = false;
+    setTimeout(closeSheet, 3000);
+  });
+});
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollContainer = document.querySelector(".bestseller-scroll-container");
+    const dots = document.querySelectorAll(".scroll-dot");
+
+    scrollContainer?.addEventListener("scroll", () => {
+      const scrollLeft = scrollContainer.scrollLeft;
+      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      const percent = scrollLeft / maxScroll;
+
+      let index = 0;
+      if (percent > 0.8) index = 4;
+      else if (percent > 0.6) index = 3;
+      else if (percent > 0.4) index = 2;
+      else if (percent > 0.2) index = 1;
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("mobileMenu");
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
+
+
+</body>
+</html>
