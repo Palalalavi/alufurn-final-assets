@@ -1383,7 +1383,14 @@ align-self: end;     /* push it to the bottom of row 2 */
   <!-- SECTION 2: Background Video with Overlay -->
   <section class="section2">
     <div class="video-container">
-      <video src="background.mp4" autoplay muted loop class="bg-video"></video>
+      <video src="background.mp4" 
+        autoplay 
+        muted 
+        loop
+        playsinline 
+        preload="auto"
+        class="bg-video">
+        </video>
       <div class="video-overlay"></div>
       <div class="video-text">
         <h2 class="main-text">Modern Living, Refined!</h2>
